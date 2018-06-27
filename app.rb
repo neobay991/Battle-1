@@ -1,10 +1,14 @@
 require 'sinatra/base'
 
-set :session_secret, 'super secret'
-
 class Battle < Sinatra::Base
 get '/' do
-  "Welcome to the Battle"
+  erb :index
+end
+
+post '/names' do
+  @player1 = params[:player1_name]
+  @player2 = params[:player2_name]
+  erb :names
 end
 
 run! if app_file == $0
