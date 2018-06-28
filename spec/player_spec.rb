@@ -1,5 +1,7 @@
 describe Player do
   subject(:jay) {described_class.new('Jay')}
+  subject(:daniel) {described_class.new('Daniel')}
+
 
   describe '#initialize' do
       it 'returns its own name' do
