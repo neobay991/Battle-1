@@ -13,7 +13,6 @@ class Battle < Sinatra::Base
 
     $player_1 = Player.new(params[:player1_name])
     $player_2 = Player.new(params[:player2_name])
-
     redirect '/play'
   end
 
@@ -21,15 +20,14 @@ class Battle < Sinatra::Base
 
     @player1 = $player_1
     @player2 = $player_2
-
     erb :play
   end
 
   get '/attack' do
 
-    @player1 = $player_1.name
-    @player2 =  $player_2.name
-
+    @player1 = $player_1
+    @player2 = $player_2
+    @player1.attack(@player2)
     erb :attack
   end
 
