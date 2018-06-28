@@ -15,4 +15,11 @@ describe Player do
     end
   end
 
+  describe "#attack" do
+    it "damage the other player" do
+      expect(daniel).to receive(:receive_damage)
+      jay.attack(daniel)
+    end
+  end
+
 end
