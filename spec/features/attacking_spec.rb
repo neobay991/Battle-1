@@ -16,8 +16,7 @@ feature "attack" do
   # I want my attack to reduce Player 2's HP by 10
   scenario 'reduce Player 2 HP by 10' do
     sign_in_and_play
-    click_button 'Attack >>'
-    click_button 'OK'
+    attack_and_confirm
     expect(page).not_to have_content 'Daniel: 60HP'
     expect(page).to have_content 'Daniel: 50HP'
   end
@@ -27,8 +26,7 @@ feature "attack" do
   # I want Player 2 to attack me, and I want to get a confirmation
   scenario 'be attacked by player 2' do
     sign_in_and_play
-    click_button 'Attack >>'
-    click_button 'OK'
+    attack_and_confirm
     click_button 'Attack >>'
     expect(page).to have_content "Daniel attacked Jay"
   end
@@ -39,10 +37,7 @@ feature "attack" do
   # I want Player 2's attack to reduce my HP by 10
   scenario 'reduce Player 1 HP by 10' do
     sign_in_and_play
-    click_button 'Attack >>'
-    click_button 'OK'
-    click_button 'Attack >>'
-    click_button 'OK'
+    2.times { attack_and_confirm }
     expect(page).not_to have_content 'Jay: 60HP'
     expect(page).to have_content 'Jay: 50HP'
   end

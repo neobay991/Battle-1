@@ -1,4 +1,4 @@
-require './lib/game'
+require_relative './attack.rb'
 
 class Player
   DEFAULT_HIT_POINTS = 60
