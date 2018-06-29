@@ -33,4 +33,18 @@ feature "attack" do
     expect(page).to have_content "Daniel attacked Jay"
   end
 
+
+  # As Player 1,
+  # So I can start to lose a game of Battle,
+  # I want Player 2's attack to reduce my HP by 10
+  scenario 'reduce Player 1 HP by 10' do
+    sign_in_and_play
+    click_button 'Attack >>'
+    click_button 'OK'
+    click_button 'Attack >>'
+    click_button 'OK'
+    expect(page).not_to have_content 'Jay: 60HP'
+    expect(page).to have_content 'Jay: 50HP'
+  end
+
 end
